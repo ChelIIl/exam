@@ -69,8 +69,7 @@ namespace src
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-            }
+                Console.WriteLine(ex);            }
         }
 
         static private void DesSort()
@@ -80,7 +79,7 @@ namespace src
 
         static private void FileSave()
         {
-            using(StreamWriter sw = new StreamWriter("D:/Users/stu-pksp117/Desktop/products.txt"))
+            using(StreamWriter sw = new StreamWriter("products.txt"))
             {
                 foreach (Products item in prod)
                 {
