@@ -14,48 +14,62 @@ namespace src
 
         static void Main(string[] args)
         {
-            Console.Write("Введите кол-во продуктов: ");
-            string val = Console.ReadLine();
-
-            while(!Int32.TryParse(val, out num) || num < 0)
+            try
             {
-                Console.WriteLine("Введите целое число!");
-                val = Console.ReadLine();
-            }
+                Console.Write("Введите кол-во продуктов: ");
+                string val = Console.ReadLine();
 
-            prod = new Products[num];
-            MasFill();
-            DesSort();
-            FileSave();
-            Console.ReadKey();
+                while (!Int32.TryParse(val, out num) || num < 0)
+                {
+                    Console.WriteLine("Введите целое число!");
+                    val = Console.ReadLine();
+                }
+
+                prod = new Products[num];
+                MasFill();
+                DesSort();
+                FileSave();
+                Console.ReadKey();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         static private void MasFill()
         {
-            int price;
-            string val;
-
-            for (int i = 0; i < num; i++)
+            try
             {
-                prod[i] = new Products();
+                int price;
+                string val;
 
-                Console.WriteLine("Рыба №{0}:", i + 1);
-                Console.WriteLine("Введите вид рыбы: ");
-                val = (Console.ReadLine());
-                prod[i].SetFishType = val;
-
-                Console.WriteLine("Введите наименование производителя: ");
-                val = Console.ReadLine();
-                prod[i].SetProiz = val;
-
-                Console.WriteLine("Введите цену рыбы: ");
-                val = Console.ReadLine();
-                while (!Int32.TryParse(val, out price) || price < 0)
+                for (int i = 0; i < num; i++)
                 {
-                    Console.WriteLine("Некорректный ввод цены!");
+                    prod[i] = new Products();
+
+                    Console.WriteLine("Рыба №{0}:", i + 1);
+                    Console.WriteLine("Введите вид рыбы: ");
+                    val = (Console.ReadLine());
+                    prod[i].SetFishType = val;
+
+                    Console.WriteLine("Введите наименование производителя: ");
                     val = Console.ReadLine();
+                    prod[i].SetProiz = val;
+
+                    Console.WriteLine("Введите цену рыбы: ");
+                    val = Console.ReadLine();
+                    while (!Int32.TryParse(val, out price) || price < 0)
+                    {
+                        Console.WriteLine("Некорректный ввод цены!");
+                        val = Console.ReadLine();
+                    }
+                    prod[i].SetPrice = price;
                 }
-                prod[i].SetPrice = price;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
 
