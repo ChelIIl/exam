@@ -56,5 +56,10 @@ namespace src
                 prod[i].SetPrice = price;
             }
         }
+
+        static private void DesSort()
+        {
+            prod = prod.AsQueryable<Products>().OrderByDescending(f => f.fishtype).ThenByDescending(p => p.price).ToArray();
+        }
     }
 }
