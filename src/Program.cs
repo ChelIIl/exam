@@ -25,6 +25,8 @@ namespace src
 
             prod = new Products[num];
             MasFill();
+            DesSort();
+            FileSave();
             Console.ReadKey();
         }
 
@@ -46,7 +48,7 @@ namespace src
                 val = Console.ReadLine();
                 prod[i].SetProiz = val;
 
-                Console.WriteLine("Введите вид рыбы: ");
+                Console.WriteLine("Введите цену рыбы: ");
                 val = Console.ReadLine();
                 while (!Int32.TryParse(val, out price) || price < 0)
                 {
@@ -60,6 +62,19 @@ namespace src
         static private void DesSort()
         {
             prod = prod.AsQueryable<Products>().OrderByDescending(f => f.fishtype).ThenByDescending(p => p.price).ToArray();
+        }
+
+        static private void FileSave()
+        {
+            using(StreamWriter sw = new StreamWriter("D:/Users/stu-pksp117/Desktop/products.txt"))
+            {
+                foreach (Products item in prod)
+                {
+                    sw.WriteLine(item.fishtype + "||" + item.proiz + "||" + item.price);
+                }                
+            }
+
+            Console.WriteLine("Массив отсортирован и сохранен в файл!");
         }
     }
 }
