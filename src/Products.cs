@@ -8,26 +8,26 @@ namespace src
 {
     class Products
     {
-        string fishtype = "";
-        string proiz = "";
-        double price;
+        public string fishtype = "";
+        public string proiz = "";
+        public double price;
 
         public string SetFishType
         {
-            get { return fishtype; }
-            set { fishtype = value; }
+            get { return this.fishtype; }
+            set { this.fishtype = value; }
         }
 
         public string SetProiz
         {
-            get { return proiz; }
-            set { proiz = value; }
+            get { return this.proiz; }
+            set { this.proiz = value; }
         }
 
         public double SetPrice
         {
-            get { return price; }
-            set { price = value; }
+            get { return this.price; }
+            set { this.price = value; }
         }
     }
 }
